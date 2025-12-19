@@ -2,12 +2,20 @@ const mainmenu = document.querySelector('.mainmenu');
 const openmenu = document.querySelector('.openmenu');
 const closemenu = document.querySelector('.closemenu');
 
+// Toggle the mobile menu by adding/removing the `open` class
 openmenu.addEventListener('click', () => {
-    mainmenu.style.top = "0";
+    mainmenu.classList.add('open');
 });
 
 closemenu.addEventListener('click', () => {
-    mainmenu.style.top = "-100%";
+    mainmenu.classList.remove('open');
+});
+
+// Close menu when a navigation link is clicked (mobile friendly)
+mainmenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (mainmenu.classList.contains('open')) mainmenu.classList.remove('open');
+    });
 });
 const buttons = document.querySelectorAll('.cbtn');
 
